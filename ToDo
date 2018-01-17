@@ -1,0 +1,58 @@
+Очень часто возникает ситуация, когда нужно сравнить два списка.
+
+Вам нужно реализовать компаратор для сравнения двух списков.
+
+Каркас класса.
+
+package ru.job4j.comparator;
+
+import java.util.Comparator;
+import java.util.List;
+
+public class ListCompare implements Comparator<List<Integer>> {
+    @Override
+    public int compare(List<Integer> left, List<Integer> right) {
+        return 0;
+    }
+}
+
+И давайте напишем тест.
+
+package ru.job4j.comparator;
+
+import org.junit.Test;
+import java.util.Arrays;
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
+
+public class ListCompareTest {
+    @Test
+    public void whenLeftAndRightEqualsThenZero() {
+        ListCompare compare = new ListCompare();
+        int rst = compare.compare(
+                Arrays.asList(1, 2, 3),
+                Arrays.asList(1, 2, 3)
+        );
+        assertThat(rst, is(0));
+    }
+
+    @Test
+    public void whenLeftLessRightThenMunis() {
+        ListCompare compare = new ListCompare();
+        int rst = compare.compare(
+                Arrays.asList(1),
+                Arrays.asList(1, 2, 3)
+        );
+        assertThat(rst, is(-1));
+    }
+
+    @Test
+    public void whenLeftGreatRightThenPlus() {
+        ListCompare compare = new ListCompare();
+        int rst = compare.compare(
+                Arrays.asList(1, 2),
+                Arrays.asList(1, 1)
+        );
+        assertThat(rst, is(1));
+    }
+}
