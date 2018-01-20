@@ -32,8 +32,8 @@ public class ListCompareTest {
     public void whenLeftGreatRightThenPlus() {
         ListCompare compare = new ListCompare();
         int rst = compare.compare(
-                Arrays.asList(1, 2),
-                Arrays.asList(1, 1)
+                Arrays.asList(1, 2, 1),
+                Arrays.asList(1, 1, 1)
         );
         assertThat(rst, is(1));
     }
