@@ -6,15 +6,10 @@ import java.util.List;
 public class ListCompare implements Comparator<List<Integer>> {
     @Override
     public int compare(List<Integer> o1, List<Integer> o2) {
-        int res;
+        int res = Integer.valueOf(o1.size()).compareTo(Integer.valueOf(o2.size()));
 
-        if (o1.size() > o2.size()) {
-            res = 1;
 
-        } else if (o1.size() < o2.size()) {
-            res = -1;
-
-        } else {
+        if (res == 0) {
             int i = 0;
             do {
                 res = o1.get(i).compareTo(o2.get(i));
